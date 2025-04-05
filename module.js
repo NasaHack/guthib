@@ -78,10 +78,11 @@ const fetchData = async () => {
     anchor.forEach((a) => {
       const path = a.getAttribute("href");
 
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener noreferrer");
+
       if (!path.startsWith("https")) {
         a.setAttribute("href", `https://github.com${path}`);
-        a.setAttribute("target", "_blank");
-        a.setAttribute("rel", "noopener noreferrer");
       }
     });
 

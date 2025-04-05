@@ -84,6 +84,14 @@ const fetchData = async () => {
         a.setAttribute("rel", "noopener noreferrer");
       }
     });
+
+    const forms = doc.querySelectorAll("form");
+
+    forms.forEach((form) => {
+      const path = form.getAttribute("action");
+      form.setAttribute("action", `https://github.com${path}`);
+      form.setAttribute("target", "_blank");
+    });
   };
 
   async function loadContent() {

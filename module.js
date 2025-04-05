@@ -66,6 +66,12 @@ const fetchData = async () => {
         <div>🥰😉😚</div>
         <a href="https://github.com/NasaHack" target="_blank" style="overflow-wrap: break-word; word-break: break-word;">https://github.com/NasaHack</a>
       </div>`;
+
+      heading.nextSibling.innerHTML = `<div style="text-align: center; padding: 20px;">
+        <p>This is a mirrored version of GitHub's homepage for educational purposes only. It is not affiliated with GitHub in any way.</p>
+        <p>Created by <span style="color:yellow; text-decoration:underline; font-weight:bold;">Proah</span></p>
+      </div>
+      `;
     }
 
     const anchor = doc.querySelectorAll("a");

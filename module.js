@@ -7,7 +7,7 @@ const proahInstance = new Proah({
 
 class Storage {
   constructor() {
-    this.memory = sessionStorage;
+    this.memory = localStorage;
   }
 
   set({ key, value }) {
@@ -29,6 +29,7 @@ const STORAGE_KEY = {
 const fetchData = async () => {
   try {
     const localData = storage.get({ key: STORAGE_KEY.GITHUB_HTML });
+
     const { error, data } =
       !localData &&
       (await proahInstance.get("https://prxi.vercel.app/SljL2Zhk/"));
@@ -36,6 +37,16 @@ const fetchData = async () => {
     if (!error && data) {
       return storage.set({ key: STORAGE_KEY.GITHUB_HTML, value: data });
     } else {
+      let timer = setTimeout(async () => {
+        const { error, data } = await proahInstance.get(
+          "https://prxi.vercel.app/SljL2Zhk/"
+        );
+        if (data && !error) {
+          storage.set({ key: STORAGE_KEY.GITHUB_HTML, value: data });
+          clearTimeout(timer);
+        }
+      }, 4000);
+
       return localData;
     }
   } catch (error) {
@@ -117,5 +128,6 @@ const fetchData = async () => {
       loader.innerHTML = "Failed to load content.";
     }
   }
+
   loadContent();
 })();

@@ -1,4 +1,4 @@
-import Proah from "./proah/index.mjs";
+import Proah from "https://www.unpkg.com/proah@1.1.13/dist/index.mjs";
 
 const proahInstance = new Proah({
   methods: ["GET"],
